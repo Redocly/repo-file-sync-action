@@ -348,9 +348,20 @@ Change-type: patch
 The actual source code of this library is in the `src` folder.
 
 - run `yarn lint` or `npm run lint` to run eslint.
-- run `yarn start` or `npm run start` to run the Action locally.
 - run `yarn build` or `npm run build` to produce a production version of [repo-file-sync-action](https://github.com/Redocly/repo-file-sync-action) in the `dist` folder.
 
+To run the action locally, use `npm start` command with required parameters:
+
+```
+GH_PAT=[YOUR_PERSONAL_ACCESS_TOKEN] GITHUB_REPOSITORY=[REPO_YOU_WANT_TO_SYNC] npm start                                                                                  
+```
+
+If you receive the following error during the development:
+
+
+> ::warning::Source [NAME_OF_YOUR_FILE/FOLDER] not found
+
+that means that you should put the file/folder in the root directory of this action project in the same structure that you defined it in the sync config (for ex.: `::warning::Source /docs not found` -> put `/docs` in the root dir of this repo).
 
 ## Credits
 
