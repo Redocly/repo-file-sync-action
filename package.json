@@ -1,0 +1,42 @@
+{
+  "name": "repo-file-sync-action",
+  "version": "1.8.0",
+  "description": "GitHub Action to keep files like Action workflows or entire directories in sync between multiple repositories.",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "start": "node src/index.js",
+    "build": "ncc build src/index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redocly/repo-file-sync-action.git"
+  },
+  "keywords": [
+    "sync",
+    "file-sync",
+    "workflow-sync",
+    "github-workflow",
+    "github-actions",
+    "github-action-workflow-sync"
+  ],
+  "author": "Redocly LLC <team@redoc.ly>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redocly/repo-file-sync-action/issues"
+  },
+  "homepage": "https://github.com/marketplace/actions/repo-file-sync-action",
+  "dependencies": {
+    "@actions/core": "^1.3.0",
+    "@actions/github": "^5.0.0",
+    "@octokit/plugin-throttling": "^3.4.2",
+    "@putout/git-status-porcelain": "^1.1.0",
+    "action-input-parser": "^1.2.2",
+    "fs-extra": "^10.0.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.28.6",
+    "eslint": "^7.27.0"
+  }
+}

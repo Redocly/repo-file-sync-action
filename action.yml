@@ -1,0 +1,73 @@
+name: 'Repo File Sync Action'
+description: 'GitHub Action to Sync Files like Workflows Between Repositories.'
+author: 'BetaHuhn'
+
+inputs:
+  GH_PAT:
+    description: |
+      GitHub Personal Access Token to use to get repos and write secrets
+    required: false
+  CONFIG_PATH:
+    description: | 
+      The path for the sync configuration file
+    required: false
+  PR_LABELS:
+    description: |
+      Labels which will be added to the pull request. Defaults to sync. Set to false to turn off
+    required: false
+  ASSIGNEES:
+    description: |
+      People to assign to the pull request. Defaults to none
+    required: false
+  COMMIT_PREFIX:
+    description: |
+      Prefix for commit message and pull request title. Defaults to 🔄
+    required: false
+  COMMIT_BODY:
+    description: |
+      Commit message body. Will be appended to commit message, separated by two line returns. Defaults to ''
+    required: false
+  COMMIT_EACH_FILE:
+    description: |
+      Commit each file seperately. Defaults to true
+    required: false
+  GIT_EMAIL:
+    description: |
+      The e-mail address used to commit the synced files. Defaults to the email of the GitHub PAT
+    required: false
+  GIT_USERNAME:
+    description: |
+      The username used to commit the synced files. Defaults to the username of the GitHub PAT
+    required: false
+  TMP_DIR:
+    description: |
+      The working directory where all sync operations will be done. Defaults to `tmp-${Date.now().toString()}`
+    required: false
+  DRY_RUN:
+    description: |
+      Run everything except for nothing will be updated. Defaults to false
+    required: false
+  SKIP_CLEANUP:
+    description: |
+      Skip removing the temporary directory (useful for debugging). Defaults to false
+    required: false
+  OVERWRITE_EXISTING_PR:
+    description: |
+      Overwrite any existing Sync PR with the new changes. Defaults to true
+    required: false
+  SKIP_PR:
+    description: |
+      Skips creating a Pull Request and pushes directly to the default branch. Defaults to false
+    required: false
+  BRANCH_PREFIX:
+    description: |
+      Specify a different prefix for the new branch in the target repo. Defaults to repo-sync/SOURCE_REPO_NAME
+    required: false
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'git-pull-request'
+  color: 'gray-dark'
