@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const readfiles = require('node-readfiles');
 const { exec } = require('child_process');
 const core = require('@actions/core');
 
@@ -72,16 +73,16 @@ const copy = async (src, dest, isDirectory, exclude) => {
   };
 
   await fs.copy(src, dest, exclude !== undefined && { filter: filterFunc });
-  
+
   // If it is a directory - check if there are any files that were removed from source dir and remove them in destination dir
   if (isDirectory) {
-    const srcFileList = await fs.readdir(src);
-    const destFileList = await fs.readdir(dest);  
-  
+    const srcFileList = await readfiles(src, { readContents: false });
+    const destFileList = await readfiles(dest, { readContents: false });
+
     for (const file of destFileList) {
       if (srcFileList.indexOf(file) === -1) {
         core.debug(`Found a deleted file in the source repo - ${dest}${file}`);
-        await fs.remove(`${dest}${file}`)
+        await fs.remove(`${dest}${file}`);
       }
     }
   }
