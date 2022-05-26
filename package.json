@@ -37,7 +37,7 @@
     "node-readfiles": "^0.2.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.31.1",
+    "@vercel/ncc": "^0.34.0",
     "eslint": "^7.27.0"
   }
 }
