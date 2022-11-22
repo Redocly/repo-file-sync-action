@@ -2,7 +2,7 @@
   
 # Repo File Sync Action
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Redocly/repo-file-sync-action/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Redocly/repo-file-sync-action/blob/main/LICENSE)
 
 Keep files like Action workflows or entire directories in sync between multiple repositories.
 
@@ -32,16 +32,16 @@ name: Sync Files
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Run GitHub File Sync
-        uses: Redocly/repo-file-sync-action@master
+        uses: Redocly/repo-file-sync-action@main
         with:
           GH_PAT: ${{ secrets.GH_PAT }}
 ```
@@ -258,7 +258,7 @@ By default [repo-file-sync-action](https://github.com/Redocly/repo-file-sync-act
 
 ```yml
 - name: Run GitHub File Sync
-  uses: Redocly/repo-file-sync-action@master
+  uses: Redocly/repo-file-sync-action@main
   with:
     GH_PAT: ${{ secrets.GH_PAT }}
     PR_LABELS: |
@@ -274,7 +274,7 @@ You can tell [repo-file-sync-action](https://github.com/Redocly/repo-file-sync-a
 
 ```yml
 - name: Run GitHub File Sync
-  uses: Redocly/repo-file-sync-action@master
+  uses: Redocly/repo-file-sync-action@main
   with:
     GH_PAT: ${{ secrets.GH_PAT }}
     ASSIGNEES: Redocly
@@ -311,7 +311,7 @@ If your repo name contains invalid characters, like a dot ([#32](https://github.
 **.github/workflows/sync.yml**
 
 ```yml
-uses: Redocly/repo-file-sync-action@master
+uses: Redocly/repo-file-sync-action@main
 with:
     GH_PAT: ${{ secrets.GH_PAT }}
     BRANCH_PREFIX: custom-branch
@@ -329,7 +329,7 @@ You can specify a custom commit body. This will be appended to the commit messag
 
 ```yml
 - name: Run GitHub File Sync
-  uses: Redocly/repo-file-sync-action@master
+  uses: Redocly/repo-file-sync-action@main
   with:
     GH_PAT: ${{ secrets.GH_PAT }}
     COMMIT_BODY: "Change-type: patch"
