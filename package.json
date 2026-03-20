@@ -39,5 +39,8 @@
   "devDependencies": {
     "@vercel/ncc": "^0.36.1",
     "eslint": "^7.27.0"
+  },
+  "overrides": {
+    "undici": "6.24.0"
   }
 }
