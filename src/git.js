@@ -33,6 +33,12 @@ class Git {
             return true;
           }
         },
+        onSecondaryRateLimit: (retryAfter, options, octokit) => {
+          // does not retry, only logs a warning
+          core.warn(
+            `SecondaryRateLimit detected for request ${options.method} ${options.url}`,
+          );
+        },
         onAbuseLimit: (retryAfter, options) => {
           // does not retry, only logs a warning
           core.warning(`Abuse detected for request ${options.method} ${options.url}`);
