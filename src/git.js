@@ -33,12 +33,15 @@ class Git {
             return true;
           }
         },
-        onAbuseLimit: (retryAfter, options) => {
-          // does not retry, only logs a warning
-          core.warning(`Abuse detected for request ${options.method} ${options.url}`);
+        onSecondaryRateLimit: (retryAfter, options, octokitInstance) => {
+            core.warning(`SecondaryRateLimit hit for ${options.method} ${options.url}`);
         },
-      },
-    });
+            onAbuseLimit: (retryAfter, options) => {
+              // does not retry, only logs a warning
+              core.warning(`Abuse detected for request ${options.method} ${options.url}`);
+            },
+          },
+        });
 
     const octokit = new Octokit(options);
 
